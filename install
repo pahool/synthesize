@@ -43,6 +43,7 @@ git clone https://github.com/armon/statsite.git
 
 # Build and install Graphite/Carbon/Whisper and Statsite
 mkdir -p /opt/graphite
+mkdir -p /var/log/carbon
 
 cd whisper; \
    git checkout ${GRAPHITE_RELEASE}; \
