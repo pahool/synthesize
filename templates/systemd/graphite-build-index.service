@@ -3,7 +3,7 @@ Description=Run graphite-build-index
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/carbon-build-index
+ExecStart=/usr/local/bin/graphite-build-index
 
 [Install]
 WantedBy=multi-user.target
