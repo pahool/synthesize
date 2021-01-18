@@ -1,0 +1,15 @@
+[Unit]
+Description=Graphite Carbon Relay
+After=network.target
+
+[Service]
+User=carbon
+Group=carbon
+ExecStartPre=/bin/rm -f /opt/graphite/storage/carbon-relay.pid
+ExecStart=/opt/graphite/bin/carbon-relay.py --config=/opt/graphite/conf/carbon.conf --rules=/opt/graphite/conf/relay-rules.conf start
+Type=simple
+PIDFile=/opt/graphite/storage/carbon-relay.pid
+LimitNOFILE=128000
+
+[Install]
+WantedBy=multi-user.target

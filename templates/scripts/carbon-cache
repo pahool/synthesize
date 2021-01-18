@@ -12,7 +12,7 @@
 # (e.g. [cache:1], [cache:2], [cache:3]
 
 NAME=carbon-cache
-INSTANCES=1
+INSTANCES=2
 
 set -e
 

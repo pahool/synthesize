@@ -245,9 +245,9 @@ DEFAULT_CACHE_DURATION = 10
 # and a common scheme is to use 7102 for instance b, 7202 for instance c, etc.
 #
 # You *should* use 127.0.0.1 here in most cases
-#CARBONLINK_HOSTS = ["127.0.0.1:7002:a", "127.0.0.1:7102:b", "127.0.0.1:7202:c"]
-#CARBONLINK_TIMEOUT = 1.0
-#CARBONLINK_RETRY_DELAY = 15 # Seconds to blacklist a failed remote server
+CARBONLINK_HOSTS = ["127.0.0.1:7012:1", "127.0.0.1:7022:2"]
+CARBONLINK_TIMEOUT = 1.0
+CARBONLINK_RETRY_DELAY = 15 # Seconds to blacklist a failed remote server
 
 # A "keyfunc" is a user-defined python function that is given a metric name
 # and returns a string that should be used when hashing the metric name.
