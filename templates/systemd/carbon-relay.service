@@ -1,17 +1,17 @@
 [Unit]
 Description=Graphite Carbon Relay
-Wants=carbon-cache.service
-After=carbon-cache.service
+After=network.target
 
 [Service]
-#User=carbon
-#Group=carbon
-#ExecStartPre=/bin/rm -f /opt/graphite/storage/carbon-relay.pid
-ExecStart=/opt/graphite/bin/carbon-relay.py --config=/opt/graphite/conf/carbon.conf --rules=/opt/graphite/conf/relay-rules.conf --log=/var/log/carbon start
-Type=simple
-Restart=on-failure
-#PIDFile=/opt/graphite/storage/carbon-relay.pid
-#LimitNOFILE=128000
+Environment=/opt/graphite/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+Environment=VIRTUAL_ENV=/opt/graphite
+Type=forking
+#StandardOutput=syslog
+#StandardError=syslog
+ExecStart=/opt/graphite/bin/carbon-relay.py --config=/opt/graphite/conf/carbon.conf --pidfile=/opt/graphite/storage/carbon-relay.pid --logfile=/var/log/carbon start
+ExecReload=/bin/kill -USR1 $MAINPID
+PIDFile=/opt/graphite/storage/carbon-relay.pid
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
