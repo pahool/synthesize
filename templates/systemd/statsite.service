@@ -1,7 +1,7 @@
 [Unit]
 Description=statsite StatsD service
-Wants=carbon-cache.service
-After=carbon-cache.service
+Wants=carbon-relay.service
+After=carbon-relay.service
 
 [Service]
 #User=statsd
