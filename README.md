@@ -3,6 +3,13 @@ Synthesize
 
 [![Install on DigitalOcean](http://synthesize-do-install.herokuapp.com/button.svg)](http://synthesize-do-install.herokuapp.com/install?url=https://github.com/obfuscurity/synthesize)
 
+:warning: This was forked from [obfucurity/synthesize](https://github.com/obfuscurity/synthesize) in order to use two carbon-cache relays, and to fix some issues I was having on a bionic host with Python compatibility and proper configuration of systemd services. It's working now, but requires manual changes to vary the number of carbon-caches by modifying the following files:
+
+* templates/graphite/conf/carbon.conf (add the carbon-cache configurations here, making note of ports and names of caches)
+* templates/graphite/webapp/local_settings.py (add the appropriate configuration changes for the CARBONLINK_HOSTS) on line 248
+* templates/graphite/conf/relay-rules.conf (destinations should be modified to match CARBONLINK_HOSTS above)
+* templates/scripts/carbon-cache (line 15 should be modified to reflect the number of carbon-caches)
+
 Installing Graphite doesn't have to be difficult. The `install` script in synthesize is designed to make it brain-dead easy to install Graphite and related services onto a modern Linux distribution.
 
 Synthesize is built to run on Ubuntu 18.04 LTS. It will __not__ run on other Ubuntu releases or Linux distributions. The goal of this project is not to become an automation alternative to modern configuration management utilities (e.g. Chef or Puppet), but rather, to make it as easy as possible for the beginner Graphite user to get started and familiar with the project without having to learn a suite of other automation and/or infrastructure-related projects.
